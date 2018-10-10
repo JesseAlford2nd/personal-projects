@@ -1,0 +1,37 @@
+#Jesse Alford II
+#10/10
+
+def createPosGraph():
+    graph = []
+    for x in range(0,121):     #function to create blank ascii graph with array
+        graph.append("---")
+    return graph
+
+graph = createPosGraph()      #call function to blank array
+
+for x in range(1,122):        #iterates through array to print ascii graph
+    print graph[x-1],
+    if(x%11==0):
+        print("\n")
+        
+for x in range(0,11):         #lables bottom with 0-10
+    print "-"+str(x)+"-",
+print("\n")
+
+inputT = input("Type 1 to enter points, -1 to exit ")  
+xCord =0
+yCord =0              #while loop to enter coordinates
+cordConv =0
+
+while(inputT != -1):
+    xCord = input("Enter the X Coordinate: ")
+    yCord = input("Enter the Y Coordinate: ")
+    xCord = 10-xCord   #graph is "upsidedown", flips coordinates to match
+    cordConv = (xCord*10)+(yCord+(xCord)) #"converts" 1d array coord to 2d, compensates for 0's
+    graph[cordConv] = ("-*-")     #replaces empty ascii with "point"
+    inputT = input("Type 1 to enter another point, -1 to exit ")
+    
+for x in range(1,122):       #iterates through array to print updates ascii graph
+    print graph[x-1],
+    if(x%11==0):
+        print("\n")
